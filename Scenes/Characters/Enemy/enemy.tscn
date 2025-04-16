@@ -1,0 +1,291 @@
+[gd_scene load_steps=21 format=3 uid="uid://bg3ohyu6fswsp"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Enemy/enemy.gd" id="1_pjt4h"]
+[ext_resource type="PackedScene" uid="uid://olvemkmkc0gl" path="res://Scenes/Interaction/Coin/coin.tscn" id="2_blijx"]
+[ext_resource type="Texture2D" uid="uid://ioe7opqsg4e6" path="res://Art/Tilemap/tilemap-characters_packed.png" id="2_gk8hr"]
+[ext_resource type="Script" path="res://Scenes/Characters/character_sprite.gd" id="3_hwcal"]
+[ext_resource type="Texture2D" uid="uid://clmfgkrq1wgeo" path="res://Art/Tilemap/tilemap_packed.png" id="4_jb0i8"]
+[ext_resource type="AudioStream" uid="uid://r3rlr2ybjvn5" path="res://Audio/power_up.wav" id="5_upexh"]
+[ext_resource type="Script" path="res://Audio/audio_pitch_randomizer.gd" id="6_hg81n"]
+[ext_resource type="PackedScene" uid="uid://b3iq6kuj4idhn" path="res://Scenes/Interaction/KillBox/player_kill_box.tscn" id="6_rafak"]
+
+[sub_resource type="Animation" id="Animation_4p710"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite/QuestionMark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerKillBox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_siotg"]
+resource_name = "enemy_detected"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite/QuestionMark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerKillBox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n8isr"]
+resource_name = "enemy_lost"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite/QuestionMark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_233r8"]
+resource_name = "kill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite/QuestionMark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerKillBox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yh1oe"]
+_data = {
+"RESET": SubResource("Animation_4p710"),
+"enemy_detected": SubResource("Animation_siotg"),
+"enemy_lost": SubResource("Animation_n8isr"),
+"kill": SubResource("Animation_233r8")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43p6k"]
+atlas = ExtResource("2_gk8hr")
+region = Rect2(120, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psx8l"]
+atlas = ExtResource("2_gk8hr")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmdma"]
+atlas = ExtResource("2_gk8hr")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhuw8"]
+atlas = ExtResource("2_gk8hr")
+region = Rect2(96, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6xo1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43p6k")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psx8l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmdma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhuw8")
+}],
+"loop": true,
+"name": &"move",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkskf"]
+size = Vector2(20, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2ms5"]
+size = Vector2(300, 75)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("wall_raycast", "floor_raycast")]
+collision_layer = 131072
+collision_mask = 3
+script = ExtResource("1_pjt4h")
+wall_raycast = NodePath("WallRaycast")
+floor_raycast = NodePath("FloorRaycast")
+drop_scene = ExtResource("2_blijx")
+drop_amount_range = Vector2i(3, 5)
+speed = 70.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yh1oe")
+}
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_x6xo1")
+animation = &"dead"
+flip_h = true
+script = ExtResource("3_hwcal")
+
+[node name="QuestionMark" type="Sprite2D" parent="EnemySprite"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -19)
+texture = ExtResource("4_jb0i8")
+region_enabled = true
+region_rect = Rect2(347.41, 127.899, 6.86349, 14.375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dkskf")
+
+[node name="WallRaycast" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(-15, 0)
+collision_mask = 2
+
+[node name="FloorRaycast" type="RayCast2D" parent="."]
+position = Vector2(-15.555, 0)
+enabled = false
+target_position = Vector2(0, 30)
+collision_mask = 2
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 65536
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+shape = SubResource("RectangleShape2D_q2ms5")
+
+[node name="PlayerKillBox" parent="." instance=ExtResource("6_rafak")]
+scale = Vector2(1.73, 0.395)
+
+[node name="EnemyDetectedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_upexh")
+volume_db = -20.0
+script = ExtResource("6_hg81n")
+
+[node name="KillSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_upexh")
+volume_db = -15.0
+pitch_scale = 0.5
+script = ExtResource("6_hg81n")
+
+[connection signal="died" from="." to="EnemySprite" method="died"]
+[connection signal="died" from="." to="KillSound" method="play_randomized"]
+[connection signal="died" from="." to="AnimationPlayer" method="play" binds= ["kill"]]
+[connection signal="enemy_detected" from="." to="EnemyDetectedSound" method="play_randomized"]
+[connection signal="enemy_detected" from="." to="AnimationPlayer" method="play" binds= ["enemy_detected"]]
+[connection signal="enemy_lost" from="." to="AnimationPlayer" method="play" binds= ["enemy_lost"]]
+[connection signal="moved" from="." to="EnemySprite" method="_on_character_moved"]
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv3o7v8iqcm60"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Coins/coin_menu.gd" id="1_6pepr"]
+[ext_resource type="SpriteFrames" uid="uid://dicolaq2nhnd4" path="res://Art/coin_texture.tres" id="2_u8ml3"]
+
+[node name="CoinMenu" type="Control" node_paths=PackedStringArray("coin_label") groups=["coin_menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6pepr")
+coin_label = NodePath("HBoxContainer/Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 23.0
+grow_horizontal = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/CenterContainer/Control"]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_u8ml3")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 25
+text = "0
+"

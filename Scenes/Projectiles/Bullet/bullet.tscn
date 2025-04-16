@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwa4qe1tq4xss"]
+
+[ext_resource type="Texture2D" uid="uid://clmfgkrq1wgeo" path="res://Art/Tilemap/tilemap_packed.png" id="1_arre6"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/projectile.gd" id="1_y6p1o"]
+[ext_resource type="AudioStream" uid="uid://dfgfk8x8hka41" path="res://Audio/jump.wav" id="3_c1vif"]
+[ext_resource type="Script" path="res://Audio/audio_pitch_randomizer.gd" id="4_msywl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2q80"]
+size = Vector2(6, 6)
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 131072
+script = ExtResource("1_y6p1o")
+speed = 250.0
+lifetime = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u2q80")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_arre6")
+region_enabled = true
+region_rect = Rect2(312, 135, 6, 6)
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c1vif")
+volume_db = -5.0
+pitch_scale = 0.5
+script = ExtResource("4_msywl")
+auto_play = true
